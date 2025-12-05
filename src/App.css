@@ -1,0 +1,92 @@
+/* Keep root constrained like PF Navigator, but don't force center text */
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Map container and overlays */
+
+.map-wrapper-card {
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111822;
+  padding: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.map-container {
+  position: relative;
+  max-width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+
+.map-image {
+  width: 100%;
+  display: block;
+  opacity: 0.50; /* dim base map */
+}
+
+/* Bookshelf hitboxes */
+
+.bookshelf {
+  position: absolute;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.bookshelf.active {
+
+  transform: translateY(-1px);
+}
+
+/* Order badges */
+
+.order-badges {
+  position: absolute;
+  top: -0.55rem;
+  right: -0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+}
+
+.order-badge {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #020617;
+  background: #facc15;
+  border: 1px solid rgba(15, 23, 42, 0.9);
+}
+
+.order-2 {
+  background: #4ade80;
+}
+
+.order-3 {
+  background: #60a5fa;
+}
+
+.order-4 {
+  background: #f472b6;
+}
+
+/* Map legend text */
+
+.map-legend {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}

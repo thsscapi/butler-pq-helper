@@ -1,0 +1,32 @@
+// riddleConfig.js
+
+export const RIDDLES = [
+  { id: 1,  text: "The head of this mansion stands tall, yet meek, the portrait...", bookshelfId: "shelf01" },
+  { id: 2,  text: "The world is bigger than you can imagine...", bookshelfId: "shelf02" },
+  { id: 3,  text: "Dusty and unkept...", bookshelfId: "shelf03" },
+  { id: 4,  text: "Cold, yet small, a tiny town...", bookshelfId: "shelf04" },
+  { id: 5,  text: "Should you seek news of old yesteryear...", bookshelfId: "shelf05" },
+  { id: 6,  text: "Packed full of playthings...", bookshelfId: "shelf06" },
+  { id: 7,  text: "...dutifully guarded, but fear not for his shift hasn't started.", bookshelfId: "shelf07" },
+  { id: 8,  text: "...something round among its angles, any sharp touch will leave it mangled", bookshelfId: "shelf08" },
+  { id: 9,  text: "Eyes wide open, and wings spread wider...", bookshelfId: "shelf09" },
+  { id: 10, text: "Is it empty, or full of air?", bookshelfId: "shelf10" },
+  { id: 11, text: "You shan't lose track of time...", bookshelfId: "shelf11" },
+  { id: 12, text: "...decaying in a vase...", bookshelfId: "shelf12" },
+  { id: 13, text: "Like a soothing melody...", bookshelfId: "shelf13" },
+  { id: 14, text: "The cold stare of the mansion's Lady...", bookshelfId: "shelf14" },
+  { id: 15, text: "A child, innocent and pure, looks down...", bookshelfId: "shelf15" },
+  { id: 16, text: "Tall when its young, short when its old...", bookshelfId: "shelf16" },
+  { id: 17, text: "Adding fuel to the fire...", bookshelfId: "shelf17" },
+  { id: 18, text: "Its preferable to go up it rather than under...", bookshelfId: "shelf18" },
+  { id: 19, text: "Right side up or up-side down?...", bookshelfId: "shelf19" },
+  { id: 20, text: "A gift awaits...", bookshelfId: "shelf20" },
+  { id: 21, text: "Water can run, but also hide, within the structure...", bookshelfId: "shelf21" },
+  { id: 22, text: "Lying in pieces, a scene of destruction...", bookshelfId: "shelf22" },
+  { id: 23, text: "...offers a home for your jacket", bookshelfId: "shelf23" },
+  { id: 24, text: "Mysteriously decorated, lavishly without lace...", bookshelfId: "shelf24" },
+  { id: 25, text: "...there lies the tool, used to write unrequited love, like a fool.", bookshelfId: "shelf25" },
+  { id: 26, text: "A friend sleeps... be careful not to disturb the peaceful look...", bookshelfId: "shelf26" },
+  { id: 27, text: "Here lies stories, some written in stone... at least they aren't alone.", bookshelfId: "shelf27" },
+  { id: 28, text: "...will give you a moment of self-reflection...", bookshelfId: "shelf28" }
+];

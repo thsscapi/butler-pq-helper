@@ -1,0 +1,32 @@
+// bookshelfConfig.js
+
+export const BOOKSHELVES = [
+  { id: "shelf01", label: "Portrait Man", xPercent: 1,  yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf02", label: "Globe", xPercent: 16, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf03", label: "Cobweb", xPercent: 21, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf04", label: "Snowglobe", xPercent: 36, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf05", label: "Newspaper", xPercent: 64.5, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf06", label: "Toys", xPercent: 73.5, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf07", label: "Guard", xPercent: 88, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf08", label: "Beachball", xPercent: 1.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf09", label: "Bird", xPercent: 21.5,  yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf10", label: "Empty", xPercent: 45, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf11", label: "Clock", xPercent: 50, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf12", label: "Vase", xPercent: 73.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf13", label: "Portrait Piano", xPercent: 79, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf14", label: "Portrait Woman", xPercent: 93.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf15", label: "Portrait Child", xPercent: 9.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf16", label: "Candle", xPercent: 14.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf17", label: "Logs", xPercent: 43.5,  yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf18", label: "Ladder", xPercent: 53, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf19", label: "Upside Down", xPercent: 67.3, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf20", label: "Present", xPercent: 72.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf21", label: "Pipe", xPercent: 87, yPercent: 57, widthPercent: 6.5, heightPercent: 17 },
+  { id: "shelf22", label: "Destroyed", xPercent: 3, yPercent: 83, widthPercent: 7, heightPercent: 17 },
+  { id: "shelf23", label: "Rack", xPercent: 15.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf24", label: "Ribbon", xPercent: 21, yPercent: 83, widthPercent: 6, heightPercent: 17 },
+  { id: "shelf25", label: "Letter", xPercent: 50, yPercent: 83, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf26", label: "Dog Plushie", xPercent: 73.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf27", label: "Tombstone", xPercent: 78.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf28", label: "Mirror", xPercent: 93.5, yPercent: 83, widthPercent: 5, heightPercent: 17 }
+];
