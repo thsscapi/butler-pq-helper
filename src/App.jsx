@@ -74,7 +74,7 @@ export default function App() {
               textAlign: "center",
             }}
           >
-            Butler PQ Riddle Helper
+            Sparrow's BPQ Helper
           </h1>
 
           <p
