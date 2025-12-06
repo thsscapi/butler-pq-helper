@@ -86,7 +86,10 @@ export default function App() {
           >
             A small helper tool for the bookshelf riddle stage in Butler PQ
             (MapleLegends). Type fragments of each riddle and see which
-            bookshelf they correspond to on the map.
+            bookshelf they correspond to on the map. Inspired by 
+			  <a href="https://forum.maplelegends.com/index.php?threads/halloween-2023-butler-pq-guide.51846/" target="_blank">
+				  Hanamiru's BPQ Guide
+			  </a>.
           </p>
 
           <p
