@@ -89,7 +89,7 @@ export default function App() {
             bookshelf they correspond to on the map. Inspired by&nbsp;
 			  <a href="https://forum.maplelegends.com/index.php?threads/halloween-2023-butler-pq-guide.51846/" target="_blank">
 				  Hanamiru's BPQ Guide
-			  </a>.
+			  </a>. 
           </p>
 
           <p
@@ -334,7 +334,7 @@ export default function App() {
                 Shelves are dim by default. When a riddle matches, the shelf
                 area highlights and shows that riddle&apos;s number. If multiple
                 shelves share a number, narrow your keywords until only one
-                remains.
+                remains. Credits to xMiho and GreenCarrot for the tip that bookshelves can be clicked in any order.
               </p>
             </div>
           </div>
