@@ -12,7 +12,7 @@ export const RIDDLES = [
   { id: 9,  text: "Eyes wide open, and wings spread wider...", bookshelfId: "shelf09" },
   { id: 10, text: "Is it empty, or full of air?", bookshelfId: "shelf10" },
   { id: 11, text: "You shan't lose track of time...", bookshelfId: "shelf11" },
-  { id: 12, text: "...decaying in a vase...", bookshelfId: "shelf12" },
+  { id: 12, text: "Beauty doesn't last forever, decaying in a vase...", bookshelfId: "shelf12" },
   { id: 13, text: "Like a soothing melody...", bookshelfId: "shelf13" },
   { id: 14, text: "The cold stare of the mansion's Lady...", bookshelfId: "shelf14" },
   { id: 15, text: "A child, innocent and pure, looks down...", bookshelfId: "shelf15" },
