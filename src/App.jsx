@@ -147,9 +147,9 @@ export default function App() {
                     color: "#9ca3af",
                   }}
                 >
-                  <li>Fill in the fields to highlight all matching shelves</li>
+                  <li>Fill in the fields to highlight all matching shelves.</li>
                   <li>If multiple shelves are highlighted, enter more words (be more specific).</li>
-                  <li>Approach and click/talk to each shelf in <b>ANY</b> order. So it is recommended to walk anti-clockwise to finish at the top.</li>
+                  <li>Approach and click/talk to each shelf in <b>ANY</b> order. It is recommended to walk anti-clockwise to finish at the top.</li>
                 </ol>
               </div>
             </div>
