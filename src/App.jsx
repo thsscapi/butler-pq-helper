@@ -149,7 +149,7 @@ export default function App() {
                 >
                   <li>Fill in the fields to highlight all matching shelves</li>
                   <li>If multiple shelves are highlighted, enter more words (be more specific).</li>
-                  <li>Approach and click/talk to each shelf in the right order.</li>
+                  <li>Approach and click/talk to each shelf in <b>ANY</b> order. So it is recommended to walk anti-clockwise to finish at the top.</li>
                 </ol>
               </div>
             </div>
