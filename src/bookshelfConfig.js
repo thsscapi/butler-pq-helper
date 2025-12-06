@@ -4,7 +4,7 @@ export const BOOKSHELVES = [
   { id: "shelf01", label: "Portrait Man", xPercent: 1,  yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf02", label: "Globe", xPercent: 16, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf03", label: "Cobweb", xPercent: 21, yPercent: 4, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf04", label: "Snowglobe", xPercent: 36, yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf04", label: "Snowglobe", xPercent: 30, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf05", label: "Newspaper", xPercent: 64.5, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf06", label: "Toys", xPercent: 73.5, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf07", label: "Guard", xPercent: 88, yPercent: 4, widthPercent: 5, heightPercent: 17 },
