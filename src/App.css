@@ -111,6 +111,13 @@
   }
 }
 
+/* Desktop / default: 4 fields in a row */
+.riddle-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
 @media (max-width: 640px) {
   .riddle-fields-grid {
     grid-template-columns: 1fr;
