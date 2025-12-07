@@ -31,19 +31,17 @@ function getMatchingBookshelves(query) {
   }).map((r) => r.bookshelfId);
 }
 
-// Helper: compute a zoomed preview style for a given shelf
-const ZOOM_SCALE = 260; // % zoom for preview cards; tweak if needed
-
+// Helper: compute a zoomed preview style for a given shelf,
+// using its widthPercent/heightPercent so the object fills more of the card.
 function getPreviewBoxStyle(shelf) {
-  // Base box (used when there is no shelf yet)
   const base = {
     width: "100%",
-    paddingTop: "80%", // aspect ratio of the small preview
+    paddingTop: "80%", // aspect ratio of the small preview card
     borderRadius: 6,
     position: "relative",
     backgroundColor: "#020617",
     backgroundRepeat: "no-repeat",
-    backgroundSize: `${ZOOM_SCALE}% ${ZOOM_SCALE}%`,
+    backgroundSize: "100% 100%",
     backgroundPosition: "50% 50%",
     border: "1px dashed #374151",
     boxSizing: "border-box",
@@ -53,13 +51,32 @@ function getPreviewBoxStyle(shelf) {
     return base;
   }
 
+  // Centre of the shelf in map-percentage coords
   const centerX = shelf.xPercent + shelf.widthPercent / 2;
   const centerY = shelf.yPercent + shelf.heightPercent / 2;
+
+  // We want the shelf to occupy roughly this % of the preview width.
+  // Increase this (e.g. 80) if you want even closer zoom.
+  const targetFillPercentOfPreview = 60;
+
+  // Without zoom, the shelf covers (widthPercent / 100) of the map horizontally.
+  // With zoom factor s, it will cover roughly s * (widthPercent / 100) of the preview.
+  // So choose s ≈ targetFill / widthPercent.
+  const rawZoomFactor = targetFillPercentOfPreview / shelf.widthPercent;
+
+  // Convert zoom factor to background-size percentage.
+  // background-size: 100% = no zoom, >100% = zoomed in.
+  let bgSizeX = 100 * rawZoomFactor;
+
+  // Clamp so it doesn't get ridiculous (just in case).
+  if (bgSizeX < 150) bgSizeX = 150;   // minimum zoom
+  if (bgSizeX > 2000) bgSizeX = 2000; // maximum zoom
 
   return {
     ...base,
     border: "1px solid #374151",
     backgroundImage: "url(/butler-map.png)",
+    backgroundSize: `${bgSizeX}% auto`,
     backgroundPosition: `${centerX}% ${centerY}%`,
   };
 }

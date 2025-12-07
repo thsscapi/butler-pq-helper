@@ -9,7 +9,7 @@ export const BOOKSHELVES = [
   { id: "shelf06", label: "Toys", xPercent: 73.5, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf07", label: "Guard", xPercent: 88, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf08", label: "Beachball", xPercent: 1.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf09", label: "Bird", xPercent: 21.5,  yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf09", label: "Bird", xPercent: 21.5,  yPercent: 26, widthPercent: 5, heightPercent: 22 },
   { id: "shelf10", label: "Empty", xPercent: 45, yPercent: 31, widthPercent: 5, heightPercent: 17 },
   { id: "shelf11", label: "Clock", xPercent: 50, yPercent: 31, widthPercent: 5, heightPercent: 17 },
   { id: "shelf12", label: "Vase", xPercent: 73.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
