@@ -65,7 +65,7 @@ function ShelfPreview({ shelf }) {
   const rawW = (shelf.widthPercent / 100) * MAP_WIDTH;
   const rawH = (shelf.heightPercent / 100) * MAP_HEIGHT;
 
-  const PADDING = 0.22; // tweak this until perfect
+  const PADDING = 0.12; // tweak this until perfect
 
   const padW = rawW * PADDING;
   const padH = rawH * PADDING;
