@@ -262,14 +262,7 @@ export default function App() {
                 boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
               }}
             >
-              <div
-                className="riddle-fields-grid"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-                  gap: "0.6rem",
-                }}
-              >
+              <div className="riddle-fields-grid">
                 {inputs.map((value, index) => (
                   <div key={index}>
                     <label
