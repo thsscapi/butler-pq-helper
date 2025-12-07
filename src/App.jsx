@@ -116,8 +116,7 @@ export default function App() {
             {/* Instructions column */}
             <div
               style={{
-                flex: "0 0 260px",
-                maxWidth: 340,
+                flex: "1 1 300px",
                 minWidth: 260,
                 textAlign: "left",
               }}
@@ -157,8 +156,8 @@ export default function App() {
             {/* Fields column */}
             <div
               style={{
-                flex: "1 1 320px",
-                minWidth: 320,
+                flex: "1 1 280px",
+                minWidth: 280,
                 textAlign: "left",
               }}
             >
@@ -187,7 +186,7 @@ export default function App() {
                         gap: "0.25rem",
                       }}
                     >
-                      Riddle {index + 1}
+                      # {index + 1}
                       <input
                         type="text"
                         value={value}
