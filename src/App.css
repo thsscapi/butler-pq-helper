@@ -90,3 +90,30 @@
   font-size: 0.8rem;
   color: #9ca3af;
 }
+
+.riddle-fields-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Each field wants to be roughly 1/4 of the row on desktop.
+   160–200px is enough for 1–2 short words. */
+.riddle-field {
+  flex: 1 1 0;
+  min-width: 160px;
+}
+
+/* On narrow screens, stack fields vertically */
+@media (max-width: 640px) {
+  .riddle-field {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .riddle-fields-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

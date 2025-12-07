@@ -37,7 +37,7 @@ const MAP_HEIGHT = 2228;
 function ShelfPreview({ shelf }) {
   const outerStyle = {
     width: "100%",
-    paddingTop: "80%", // aspect ratio of preview card; same trick as before
+    paddingTop: "80%", // aspect ratio of preview card
     borderRadius: 6,
     position: "relative",
     backgroundColor: "#020617",
@@ -65,7 +65,7 @@ function ShelfPreview({ shelf }) {
   const rawW = (shelf.widthPercent / 100) * MAP_WIDTH;
   const rawH = (shelf.heightPercent / 100) * MAP_HEIGHT;
 
-  const PADDING = 0.12; // tweak this until perfect
+  const PADDING = 0.12;
 
   const padW = rawW * PADDING;
   const padH = rawH * PADDING;
@@ -210,112 +210,93 @@ export default function App() {
             Created by: <strong>thsscapi (Sparrow)</strong>
           </p>
 
-          {/* ROW 1: instructions (left) + fields (right) */}
-          <div
-            style={{
-              display: "flex",
-              gap: "1.25rem",
-              flexWrap: "wrap",
-              alignItems: "flex-start",
-              marginBottom: "1rem",
-            }}
-          >
-            {/* Instructions column */}
+          {/* ROW 1: instructions full-width */}
+          <div style={{ marginBottom: "1rem" }}>
             <div
               style={{
-                flex: "1 1 300px",
-                minWidth: 260,
+                fontSize: "0.85rem",
+                background: "#111822",
+                borderRadius: 8,
+                border: "1px solid #333",
+                padding: "0.6rem 0.8rem",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
                 textAlign: "left",
               }}
             >
-              <div
+              <h2
                 style={{
-                  fontSize: "0.85rem",
-                  background: "#111822",
-                  borderRadius: 8,
-                  border: "1px solid #333",
-                  padding: "0.6rem 0.8rem",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                  fontSize: "0.95rem",
+                  margin: "0 0 0.35rem 0",
                 }}
               >
-                <h2
-                  style={{
-                    fontSize: "0.95rem",
-                    margin: "0 0 0.35rem 0",
-                  }}
-                >
-                  How to use
-                </h2>
-                <ol
-                  style={{
-                    margin: 0,
-                    paddingLeft: "1.2rem",
-                    color: "#9ca3af",
-                  }}
-                >
-                  <li>Fill in the fields to highlight all matching shelves.</li>
-                  <li>
-                    If multiple shelves are highlighted, enter more words (be
-                    more specific).
-                  </li>
-                  <li>
-                    Approach and click/talk to each shelf in <b>ANY</b> order.
-                    It is recommended to walk anti-clockwise to finish at the
-                    top.
-                  </li>
-                </ol>
-              </div>
+                How to use
+              </h2>
+              <ol
+                style={{
+                  margin: 0,
+                  paddingLeft: "1.2rem",
+                  color: "#9ca3af",
+                }}
+              >
+                <li>Fill in the fields to highlight all matching shelves.</li>
+                <li>
+                  If multiple shelves are highlighted, enter more words (be more
+                  specific).
+                </li>
+                <li>
+                  Approach and click/talk to each shelf in <b>ANY</b> order. It
+                  is recommended to walk anti-clockwise to finish at the top.
+                </li>
+              </ol>
             </div>
+          </div>
 
-            {/* Fields column */}
+          {/* ROW 2: text fields full-width */}
+          <div style={{ marginBottom: "1rem" }}>
             <div
               style={{
-                flex: "1 1 280px",
-                minWidth: 280,
-                textAlign: "left",
+                background: "#111822",
+                borderRadius: 8,
+                border: "1px solid #333",
+                padding: "0.6rem 0.8rem",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
               }}
             >
               <div
+                className="riddle-fields-grid"
                 style={{
-                  background: "#111822",
-                  borderRadius: 8,
-                  border: "1px solid #333",
-                  padding: "0.6rem 0.8rem",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gap: "0.6rem",
                 }}
               >
                 {inputs.map((value, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      marginBottom: index === inputs.length - 1 ? 0 : "0rem",
-                    }}
-                  >
+                  <div key={index}>
                     <label
                       style={{
                         fontSize: "0.9rem",
                         fontWeight: 500,
                         display: "flex",
-                        flexDirection: "row",
+                        flexDirection: "column",
                         gap: "0.25rem",
                       }}
                     >
-                      #{index + 1}
+                      <span>#{index + 1}</span>
                       <input
                         type="text"
                         value={value}
                         onChange={(e) => handleChange(index, e.target.value)}
-                        placeholder="e.g. cold stare lady"
+                        placeholder="e.g. cold"
                         style={{
                           padding: "0.3rem 0.45rem",
-                          marginLeft: "0.5rem",
-                          width: "75%",
                           borderRadius: 6,
                           border: "1px solid #374151",
                           background: "#020617",
                           color: "#e5e7eb",
                           fontSize: "0.85rem",
                           outline: "none",
+                          width: "100%",
+                          boxSizing: "border-box",
                           transition:
                             "border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease",
                         }}
@@ -330,45 +311,48 @@ export default function App() {
                       }}
                     >
                       {value && matchesByField[index].length > 1 && (
-                        <span>{matchesByField[index].length} matches found</span>
+                        <span>
+                          {matchesByField[index].length} matches found ⚠️
+                        </span>
                       )}
                       {value && matchesByField[index].length === 1 && (
                         <span>Unique match found ✅</span>
                       )}
                       {value && matchesByField[index].length === 0 && (
-                        <span>No matches yet</span>
+                        <span>No matches yet ❌</span>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-              {/* Reset button */}
-              <div
+            </div>
+
+            {/* Reset button */}
+            <div
+              style={{
+                marginTop: "0.6rem",
+                textAlign: "left",
+              }}
+            >
+              <button
+                type="button"
+                onClick={handleReset}
                 style={{
-                  marginTop: "0.6rem",
-                  textAlign: "left",
+                  padding: "0.3rem 0.75rem",
+                  borderRadius: 6,
+                  border: "1px solid #444",
+                  background: "#111822",
+                  color: "#eee",
+                  cursor: "pointer",
+                  fontSize: "0.8rem",
                 }}
               >
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  style={{
-                    padding: "0.3rem 0.75rem",
-                    borderRadius: 6,
-                    border: "1px solid #444",
-                    background: "#111822",
-                    color: "#eee",
-                    cursor: "pointer",
-                    fontSize: "0.8rem",
-                  }}
-                >
-                  Reset all fields
-                </button>
-              </div>
+                Reset all fields
+              </button>
             </div>
           </div>
 
-          {/* ROW 1.5: matched shelf preview cards */}
+          {/* ROW 3: matched shelf preview cards */}
           <div style={{ marginBottom: "1rem" }}>
             <div
               style={{
@@ -376,7 +360,7 @@ export default function App() {
                 borderRadius: 8,
                 border: "1px solid #333",
                 padding: "0.6rem 0.8rem 0.8rem",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+                boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
               }}
             >
               <h2
@@ -424,8 +408,9 @@ export default function App() {
                   } else if (shelfIds.length === 1) {
                     statusText = `Unique shelf: ${primaryShelf?.label || ""}`;
                   } else {
-                    statusText = `${shelfIds.length} possible shelves. Showing one example: ${primaryShelf?.label || ""
-                      }`;
+                    statusText = `${shelfIds.length} possible shelves ⚠️. Showing one example: ${
+                      primaryShelf?.label || ""
+                    }`;
                   }
 
                   return (
@@ -469,7 +454,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* ROW 2: full-width map */}
+          {/* ROW 4: full-width map */}
           <div className="map-wrapper-card">
             <div className="map-container">
               <img
