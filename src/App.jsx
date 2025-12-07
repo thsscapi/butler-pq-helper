@@ -31,54 +31,63 @@ function getMatchingBookshelves(query) {
   }).map((r) => r.bookshelfId);
 }
 
-// Helper: compute a zoomed preview style for a given shelf,
-// using its widthPercent/heightPercent so the object fills more of the card.
-function getPreviewBoxStyle(shelf) {
-  const base = {
+const MAP_WIDTH = 6622;
+const MAP_HEIGHT = 2228;
+
+function ShelfPreview({ shelf }) {
+  const outerStyle = {
     width: "100%",
-    paddingTop: "80%", // aspect ratio of the small preview card
+    paddingTop: "80%", // aspect ratio of preview card; same trick as before
     borderRadius: 6,
     position: "relative",
     backgroundColor: "#020617",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 100%",
-    backgroundPosition: "50% 50%",
-    border: "1px dashed #374151",
     boxSizing: "border-box",
+    overflow: "hidden",
+    border: "1px solid #374151",
   };
 
   if (!shelf) {
-    return base;
+    // Empty placeholder when there is no match / no input
+    return (
+      <div
+        style={{
+          ...outerStyle,
+          borderStyle: "dashed",
+          opacity: 0.6,
+        }}
+      />
+    );
   }
 
-  // Centre of the shelf in map-percentage coords
-  const centerX = shelf.xPercent + shelf.widthPercent / 2;
-  const centerY = shelf.yPercent + shelf.heightPercent / 2;
+  // Convert % rectangle to pixel coordinates on the original map
+  const viewBoxX = (shelf.xPercent / 100) * MAP_WIDTH;
+  const viewBoxY = (shelf.yPercent / 100) * MAP_HEIGHT;
+  const viewBoxW = (shelf.widthPercent / 100) * MAP_WIDTH;
+  const viewBoxH = (shelf.heightPercent / 100) * MAP_HEIGHT;
 
-  // We want the shelf to occupy roughly this % of the preview width.
-  // Increase this (e.g. 80) if you want even closer zoom.
-  const targetFillPercentOfPreview = 60;
-
-  // Without zoom, the shelf covers (widthPercent / 100) of the map horizontally.
-  // With zoom factor s, it will cover roughly s * (widthPercent / 100) of the preview.
-  // So choose s ≈ targetFill / widthPercent.
-  const rawZoomFactor = targetFillPercentOfPreview / shelf.widthPercent;
-
-  // Convert zoom factor to background-size percentage.
-  // background-size: 100% = no zoom, >100% = zoomed in.
-  let bgSizeX = 100 * rawZoomFactor;
-
-  // Clamp so it doesn't get ridiculous (just in case).
-  if (bgSizeX < 150) bgSizeX = 150;   // minimum zoom
-  if (bgSizeX > 2000) bgSizeX = 2000; // maximum zoom
-
-  return {
-    ...base,
-    border: "1px solid #374151",
-    backgroundImage: "url(/butler-map.png)",
-    backgroundSize: `${bgSizeX}% auto`,
-    backgroundPosition: `${centerX}% ${centerY}%`,
-  };
+  return (
+    <div style={outerStyle}>
+      <svg
+        viewBox={`${viewBoxX} ${viewBoxY} ${viewBoxW} ${viewBoxH}`}
+        width="100%"
+        height="100%"
+        preserveAspectRatio="xMidYMid slice"
+        style={{
+          position: "absolute",
+          inset: 0,
+          display: "block",
+        }}
+      >
+        <image
+          href="/butler-map.png"
+          x="0"
+          y="0"
+          width={MAP_WIDTH}
+          height={MAP_HEIGHT}
+        />
+      </svg>
+    </div>
+  );
 }
 
 // Helper: order-based styles for the result cards
@@ -432,7 +441,7 @@ export default function App() {
                       >
                         #{order}
                       </div>
-                      <div style={getPreviewBoxStyle(primaryShelf)} />
+                      <ShelfPreview shelf={primaryShelf} />
                       <div
                         style={{
                           fontSize: "0.75rem",
