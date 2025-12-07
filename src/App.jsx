@@ -135,6 +135,7 @@ function getOrderCardStyles(order) {
 
 export default function App() {
   const [inputs, setInputs] = useState(["", "", "", ""]);
+  const [showZoom, setShowZoom] = useState(true);
 
   const handleChange = (index, value) => {
     setInputs((prev) => {
@@ -345,7 +346,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* ROW 3: matched shelf preview cards */}
+          {/* ROW 3: matched shelf preview cards (accordion) */}
           <div style={{ marginBottom: "1rem" }}>
             <div
               style={{
@@ -356,94 +357,129 @@ export default function App() {
                 boxShadow: "0 10px 30px rgba(0, 0, 0, 0.4)",
               }}
             >
-              <h2
-                style={{
-                  fontSize: "0.95rem",
-                  margin: "0 0 0.25rem 0",
-                }}
-              >
-                Matched shelves (zoomed)
-              </h2>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  margin: "0 0 0.5rem 0",
-                  color: "#9ca3af",
-                }}
-              >
-                Each card below shows the best matching bookshelf for that
-                riddle, using the same colour as the highlight on the map.
-              </p>
-
+              {/* Header row with title + toggle button */}
               <div
                 style={{
                   display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.75rem",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: showZoom ? "0.25rem" : 0,
                 }}
               >
-                {[0, 1, 2, 3].map((idx) => {
-                  const order = idx + 1;
-                  const inputValue = inputs[idx].trim();
-                  const shelfIds = matchesByField[idx];
-                  const matchingShelves = BOOKSHELVES.filter((shelf) =>
-                    shelfIds.includes(shelf.id)
-                  );
-                  const primaryShelf =
-                    matchingShelves.length > 0 ? matchingShelves[0] : null;
-                  const cardStyles = getOrderCardStyles(order);
-
-                  let statusText = "";
-                  if (!inputValue) {
-                    statusText = "No input yet.";
-                  } else if (shelfIds.length === 0) {
-                    statusText = "No shelves match this text.";
-                  } else if (shelfIds.length === 1) {
-                    statusText = `Unique shelf: ${primaryShelf?.label || ""}`;
-                  } else {
-                    statusText = `${shelfIds.length} possible shelves ⚠️. Showing one example: ${
-                      primaryShelf?.label || ""
-                    }`;
-                  }
-
-                  return (
-                    <div
-                      key={order}
-                      style={{
-                        flex: "1 1 150px",
-                        minWidth: 150,
-                        maxWidth: 220,
-                        borderRadius: 8,
-                        border: "1px solid #444",
-                        padding: "0.45rem 0.5rem 0.5rem",
-                        boxSizing: "border-box",
-                        ...cardStyles,
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: "0.8rem",
-                          marginBottom: "0.25rem",
-                          fontWeight: 500,
-                        }}
-                      >
-                        #{order}
-                      </div>
-                      <ShelfPreview shelf={primaryShelf} />
-                      <div
-                        style={{
-                          fontSize: "0.75rem",
-                          marginTop: "0.25rem",
-                          color: "#9ca3af",
-                          minHeight: "2.4em",
-                        }}
-                      >
-                        {statusText}
-                      </div>
-                    </div>
-                  );
-                })}
+                <h2
+                  style={{
+                    fontSize: "0.95rem",
+                    margin: 0,
+                  }}
+                >
+                  Matched shelves (zoomed)
+                </h2>
+                <button
+                  type="button"
+                  onClick={() => setShowZoom((prev) => !prev)}
+                  aria-label={showZoom ? "Hide zoom previews" : "Show zoom previews"}
+                  style={{
+                    border: "none",
+                    background: "transparent",
+                    color: "#e5e7eb",
+                    cursor: "pointer",
+                    fontSize: "1rem",
+                    lineHeight: 1,
+                    padding: 0,
+                  }}
+                >
+                  {showZoom ? "▾" : "▸"}
+                </button>
               </div>
+
+              {showZoom && (
+                <>
+                  <p
+                    style={{
+                      fontSize: "0.8rem",
+                      margin: "0 0 0.5rem 0",
+                      color: "#9ca3af",
+                    }}
+                  >
+                    Each card below shows the best matching bookshelf for that
+                    riddle, using the same colour as the highlight on the map.
+                  </p>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      gap: "0.75rem",
+                    }}
+                  >
+                    {[0, 1, 2, 3].map((idx) => {
+                      const order = idx + 1;
+                      const inputValue = inputs[idx].trim();
+                      const shelfIds = matchesByField[idx];
+                      const matchingShelves = BOOKSHELVES.filter((shelf) =>
+                        shelfIds.includes(shelf.id)
+                      );
+                      const primaryShelf =
+                        matchingShelves.length > 0 ? matchingShelves[0] : null;
+                      const cardStyles = getOrderCardStyles(order);
+
+                      let statusText = "";
+                      if (!inputValue) {
+                        statusText = "No input yet.";
+                      } else if (shelfIds.length === 0) {
+                        statusText = "No shelves match this text.";
+                      } else if (shelfIds.length === 1) {
+                        statusText = `Unique shelf: ${
+                          primaryShelf?.label || ""
+                        }`;
+                      } else {
+                        statusText = `${
+                          shelfIds.length
+                        } possible shelves ⚠️. Showing one example: ${
+                          primaryShelf?.label || ""
+                        }`;
+                      }
+
+                      return (
+                        <div
+                          key={order}
+                          style={{
+                            flex: "1 1 150px",
+                            minWidth: 150,
+                            maxWidth: 220,
+                            borderRadius: 8,
+                            border: "1px solid #444",
+                            padding: "0.45rem 0.5rem 0.5rem",
+                            boxSizing: "border-box",
+                            ...cardStyles,
+                          }}
+                        >
+                          <div
+                            style={{
+                              fontSize: "0.8rem",
+                              marginBottom: "0.25rem",
+                              fontWeight: 500,
+                            }}
+                          >
+                            #{order}
+                          </div>
+                          <ShelfPreview shelf={primaryShelf} />
+                          <div
+                            style={{
+                              fontSize: "0.75rem",
+                              marginTop: "0.25rem",
+                              color: "#9ca3af",
+                              minHeight: "2.4em",
+                            }}
+                          >
+                            {statusText}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
