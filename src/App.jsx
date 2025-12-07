@@ -186,7 +186,7 @@ export default function App() {
                         gap: "0.25rem",
                       }}
                     >
-                      # {index + 1}
+                      #{index + 1}
                       <input
                         type="text"
                         value={value}
