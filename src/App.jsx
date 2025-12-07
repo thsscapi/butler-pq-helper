@@ -562,9 +562,11 @@ export default function App() {
                 Shelves are dim by default. When a riddle matches, the shelf
                 area highlights and shows that riddle&apos;s number. If multiple
                 shelves share a number, narrow your keywords until only one
-                remains. Credits to xMiho and GreenCarrot for the tip that
-                bookshelves can be clicked in any order.
+                remains. 
               </p>
+	      <p style={{ margin: 0 }}>
+		Credits to xMiho and GreenCarrot for the tip that bookshelves can be clicked in any order. Credits to PipedPiper and OnlyCats for their suggestions on zoomed-in shelves and layout changes.
+	      </p>
             </div>
           </div>
 
