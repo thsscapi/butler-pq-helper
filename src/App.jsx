@@ -74,7 +74,7 @@ export default function App() {
               textAlign: "center",
             }}
           >
-            Butler PQ Riddle Helper
+            Sparrow's BPQ Helper
           </h1>
 
           <p
@@ -86,7 +86,10 @@ export default function App() {
           >
             A small helper tool for the bookshelf riddle stage in Butler PQ
             (MapleLegends). Type fragments of each riddle and see which
-            bookshelf they correspond to on the map.
+            bookshelf they correspond to on the map. Inspired by&nbsp;
+			  <a href="https://forum.maplelegends.com/index.php?threads/halloween-2023-butler-pq-guide.51846/" target="_blank">
+				  Hanamiru's BPQ Guide
+			  </a>. 
           </p>
 
           <p
@@ -113,8 +116,7 @@ export default function App() {
             {/* Instructions column */}
             <div
               style={{
-                flex: "0 0 260px",
-                maxWidth: 340,
+                flex: "1 1 300px",
                 minWidth: 260,
                 textAlign: "left",
               }}
@@ -144,9 +146,9 @@ export default function App() {
                     color: "#9ca3af",
                   }}
                 >
-                  <li>Fill in the fields to highlight all matching shelves</li>
+                  <li>Fill in the fields to highlight all matching shelves.</li>
                   <li>If multiple shelves are highlighted, enter more words (be more specific).</li>
-                  <li>Approach and click/talk to each shelf in the right order.</li>
+                  <li>Approach and click/talk to each shelf in <b>ANY</b> order. It is recommended to walk anti-clockwise to finish at the top.</li>
                 </ol>
               </div>
             </div>
@@ -154,8 +156,8 @@ export default function App() {
             {/* Fields column */}
             <div
               style={{
-                flex: "1 1 320px",
-                minWidth: 320,
+                flex: "1 1 280px",
+                minWidth: 280,
                 textAlign: "left",
               }}
             >
@@ -184,7 +186,7 @@ export default function App() {
                         gap: "0.25rem",
                       }}
                     >
-                      Riddle {index + 1}
+                      #{index + 1}
                       <input
                         type="text"
                         value={value}
@@ -331,7 +333,7 @@ export default function App() {
                 Shelves are dim by default. When a riddle matches, the shelf
                 area highlights and shows that riddle&apos;s number. If multiple
                 shelves share a number, narrow your keywords until only one
-                remains.
+                remains. Credits to xMiho and GreenCarrot for the tip that bookshelves can be clicked in any order.
               </p>
             </div>
           </div>
