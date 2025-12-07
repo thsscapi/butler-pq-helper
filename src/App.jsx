@@ -31,6 +31,72 @@ function getMatchingBookshelves(query) {
   }).map((r) => r.bookshelfId);
 }
 
+// Helper: compute a zoomed preview style for a given shelf
+const ZOOM_SCALE = 260; // % zoom for preview cards; tweak if needed
+
+function getPreviewBoxStyle(shelf) {
+  // Base box (used when there is no shelf yet)
+  const base = {
+    width: "100%",
+    paddingTop: "80%", // aspect ratio of the small preview
+    borderRadius: 6,
+    position: "relative",
+    backgroundColor: "#020617",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: `${ZOOM_SCALE}% ${ZOOM_SCALE}%`,
+    backgroundPosition: "50% 50%",
+    border: "1px dashed #374151",
+    boxSizing: "border-box",
+  };
+
+  if (!shelf) {
+    return base;
+  }
+
+  const centerX = shelf.xPercent + shelf.widthPercent / 2;
+  const centerY = shelf.yPercent + shelf.heightPercent / 2;
+
+  return {
+    ...base,
+    border: "1px solid #374151",
+    backgroundImage: "url(/butler-map.png)",
+    backgroundPosition: `${centerX}% ${centerY}%`,
+  };
+}
+
+// Helper: order-based styles for the result cards
+function getOrderCardStyles(order) {
+  if (order === 1) {
+    return {
+      borderColor: "rgba(250, 204, 21, 0.9)",
+      boxShadow: "0 0 8px rgba(250, 204, 21, 0.5)",
+      background: "rgba(250, 204, 21, 0.06)",
+    };
+  }
+  if (order === 2) {
+    return {
+      borderColor: "rgba(74, 222, 128, 0.9)",
+      boxShadow: "0 0 8px rgba(74, 222, 128, 0.5)",
+      background: "rgba(74, 222, 128, 0.06)",
+    };
+  }
+  if (order === 3) {
+    return {
+      borderColor: "rgba(96, 165, 250, 0.9)",
+      boxShadow: "0 0 8px rgba(96, 165, 250, 0.5)",
+      background: "rgba(96, 165, 250, 0.06)",
+    };
+  }
+  if (order === 4) {
+    return {
+      borderColor: "rgba(244, 114, 182, 0.9)",
+      boxShadow: "0 0 8px rgba(244, 114, 182, 0.5)",
+      background: "rgba(244, 114, 182, 0.06)",
+    };
+  }
+  return {};
+}
+
 export default function App() {
   const [inputs, setInputs] = useState(["", "", "", ""]);
 
@@ -74,7 +140,7 @@ export default function App() {
               textAlign: "center",
             }}
           >
-            Sparrow's BPQ Helper
+            Sparrow&apos;s BPQ Helper
           </h1>
 
           <p
@@ -86,10 +152,15 @@ export default function App() {
           >
             A small helper tool for the bookshelf riddle stage in Butler PQ
             (MapleLegends). Type fragments of each riddle and see which
-            bookshelf they correspond to on the map. Inspired by&nbsp;
-			  <a href="https://forum.maplelegends.com/index.php?threads/halloween-2023-butler-pq-guide.51846/" target="_blank">
-				  Hanamiru's BPQ Guide
-			  </a>. 
+            bookshelf they correspond to on the map. Inspired by{" "}
+            <a
+              href="https://forum.maplelegends.com/index.php?threads/halloween-2023-butler-pq-guide.51846/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Hanamiru&apos;s BPQ Guide
+            </a>
+            .
           </p>
 
           <p
@@ -147,8 +218,15 @@ export default function App() {
                   }}
                 >
                   <li>Fill in the fields to highlight all matching shelves.</li>
-                  <li>If multiple shelves are highlighted, enter more words (be more specific).</li>
-                  <li>Approach and click/talk to each shelf in <b>ANY</b> order. It is recommended to walk anti-clockwise to finish at the top.</li>
+                  <li>
+                    If multiple shelves are highlighted, enter more words (be
+                    more specific).
+                  </li>
+                  <li>
+                    Approach and click/talk to each shelf in <b>ANY</b> order.
+                    It is recommended to walk anti-clockwise to finish at the
+                    top.
+                  </li>
                 </ol>
               </div>
             </div>
@@ -194,8 +272,8 @@ export default function App() {
                         placeholder="e.g. cold stare lady"
                         style={{
                           padding: "0.3rem 0.45rem",
-			  marginLeft: "0.5rem",
-			  width: "75%",
+                          marginLeft: "0.5rem",
+                          width: "75%",
                           borderRadius: 6,
                           border: "1px solid #374151",
                           background: "#020617",
@@ -250,6 +328,107 @@ export default function App() {
                 >
                   Reset all fields
                 </button>
+              </div>
+            </div>
+          </div>
+
+          {/* ROW 1.5: matched shelf preview cards */}
+          <div style={{ marginBottom: "1rem" }}>
+            <div
+              style={{
+                background: "#111822",
+                borderRadius: 8,
+                border: "1px solid #333",
+                padding: "0.6rem 0.8rem 0.8rem",
+                boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "0.95rem",
+                  margin: "0 0 0.25rem 0",
+                }}
+              >
+                Matched shelves (zoomed)
+              </h2>
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  margin: "0 0 0.5rem 0",
+                  color: "#9ca3af",
+                }}
+              >
+                Each card below shows the best matching bookshelf for that
+                riddle, using the same colour as the highlight on the map.
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "0.75rem",
+                }}
+              >
+                {[0, 1, 2, 3].map((idx) => {
+                  const order = idx + 1;
+                  const inputValue = inputs[idx].trim();
+                  const shelfIds = matchesByField[idx];
+                  const matchingShelves = BOOKSHELVES.filter((shelf) =>
+                    shelfIds.includes(shelf.id)
+                  );
+                  const primaryShelf =
+                    matchingShelves.length > 0 ? matchingShelves[0] : null;
+                  const cardStyles = getOrderCardStyles(order);
+
+                  let statusText = "";
+                  if (!inputValue) {
+                    statusText = "No input yet.";
+                  } else if (shelfIds.length === 0) {
+                    statusText = "No shelves match this text.";
+                  } else if (shelfIds.length === 1) {
+                    statusText = `Unique shelf: ${primaryShelf?.label || ""}`;
+                  } else {
+                    statusText = `${shelfIds.length} possible shelves. Showing one example: ${primaryShelf?.label || ""
+                      }`;
+                  }
+
+                  return (
+                    <div
+                      key={order}
+                      style={{
+                        flex: "1 1 150px",
+                        minWidth: 150,
+                        maxWidth: 220,
+                        borderRadius: 8,
+                        border: "1px solid #444",
+                        padding: "0.45rem 0.5rem 0.5rem",
+                        boxSizing: "border-box",
+                        ...cardStyles,
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "0.8rem",
+                          marginBottom: "0.25rem",
+                          fontWeight: 500,
+                        }}
+                      >
+                        #{order}
+                      </div>
+                      <div style={getPreviewBoxStyle(primaryShelf)} />
+                      <div
+                        style={{
+                          fontSize: "0.75rem",
+                          marginTop: "0.25rem",
+                          color: "#9ca3af",
+                          minHeight: "2.4em",
+                        }}
+                      >
+                        {statusText}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -333,7 +512,8 @@ export default function App() {
                 Shelves are dim by default. When a riddle matches, the shelf
                 area highlights and shows that riddle&apos;s number. If multiple
                 shelves share a number, narrow your keywords until only one
-                remains. Credits to xMiho and GreenCarrot for the tip that bookshelves can be clicked in any order.
+                remains. Credits to xMiho and GreenCarrot for the tip that
+                bookshelves can be clicked in any order.
               </p>
             </div>
           </div>
@@ -359,14 +539,15 @@ export default function App() {
               MapleLegends
             </a>
             , but not affiliated. For feedback, please DM thsscapi on{" "}
-	    <a
+            <a
               href="https://forum.maplelegends.com/index.php?conversations/add&to=thsscapi"
               target="_blank"
               rel="noreferrer"
               style={{ color: "#9ad1ff", textDecoration: "underline" }}
             >
-	      ML forums
-	    </a>.
+              ML forums
+            </a>
+            .
           </div>
         </div>
       </div>
