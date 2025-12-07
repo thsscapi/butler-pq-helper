@@ -60,10 +60,20 @@ function ShelfPreview({ shelf }) {
   }
 
   // Convert % rectangle to pixel coordinates on the original map
-  const viewBoxX = (shelf.xPercent / 100) * MAP_WIDTH;
-  const viewBoxY = (shelf.yPercent / 100) * MAP_HEIGHT;
-  const viewBoxW = (shelf.widthPercent / 100) * MAP_WIDTH;
-  const viewBoxH = (shelf.heightPercent / 100) * MAP_HEIGHT;
+  const rawX = (shelf.xPercent / 100) * MAP_WIDTH;
+  const rawY = (shelf.yPercent / 100) * MAP_HEIGHT;
+  const rawW = (shelf.widthPercent / 100) * MAP_WIDTH;
+  const rawH = (shelf.heightPercent / 100) * MAP_HEIGHT;
+
+  const PADDING = 0.18; // tweak this until perfect
+
+  const padW = rawW * PADDING;
+  const padH = rawH * PADDING;
+
+  const viewBoxX = rawX - padW;
+  const viewBoxY = rawY - padH;
+  const viewBoxW = rawW + padW * 2;
+  const viewBoxH = rawH + padH * 2;
 
   return (
     <div style={outerStyle}>
