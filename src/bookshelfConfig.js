@@ -1,7 +1,7 @@
 // bookshelfConfig.js
 
 export const BOOKSHELVES = [
-  { id: "shelf01", label: "Portrait Man", xPercent: 1,  yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf01", label: "Portrait of Man", xPercent: 1,  yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf02", label: "Globe", xPercent: 16, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf03", label: "Cobweb", xPercent: 21, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf04", label: "Snowglobe", xPercent: 30, yPercent: 4, widthPercent: 5, heightPercent: 17 },
@@ -13,9 +13,9 @@ export const BOOKSHELVES = [
   { id: "shelf10", label: "Empty", xPercent: 45, yPercent: 31, widthPercent: 5, heightPercent: 17 },
   { id: "shelf11", label: "Clock", xPercent: 50, yPercent: 31, widthPercent: 5, heightPercent: 17 },
   { id: "shelf12", label: "Vase", xPercent: 73.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf13", label: "Portrait Piano", xPercent: 79, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf14", label: "Portrait Woman", xPercent: 93.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf15", label: "Portrait Child", xPercent: 9.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf13", label: "Portrait of Piano", xPercent: 79, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf14", label: "Portrait of Woman", xPercent: 93.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf15", label: "Portrait of Child", xPercent: 9.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf16", label: "Candle", xPercent: 14.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf17", label: "Logs", xPercent: 43.5,  yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf18", label: "Ladder", xPercent: 53, yPercent: 57, widthPercent: 5, heightPercent: 17 },
