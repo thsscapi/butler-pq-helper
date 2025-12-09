@@ -1,7 +1,7 @@
 // bookshelfConfig.js
 
 export const BOOKSHELVES = [
-  { id: "shelf01", label: "Portrait of Man", xPercent: 1,  yPercent: 4, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf01", label: "Portrait of Jonas", xPercent: 1,  yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf02", label: "Globe", xPercent: 16, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf03", label: "Cobweb", xPercent: 21, yPercent: 4, widthPercent: 5, heightPercent: 17 },
   { id: "shelf04", label: "Snowglobe", xPercent: 30, yPercent: 4, widthPercent: 5, heightPercent: 17 },
@@ -11,13 +11,13 @@ export const BOOKSHELVES = [
   { id: "shelf08", label: "Beachball", xPercent: 1.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
   { id: "shelf09", label: "Bird", xPercent: 21.5,  yPercent: 26, widthPercent: 5, heightPercent: 22 },
   { id: "shelf10", label: "Empty", xPercent: 45, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf11", label: "Clock", xPercent: 50, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf12", label: "Vase", xPercent: 73.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf11", label: "Table Clock", xPercent: 50, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf12", label: "Flower Vase", xPercent: 73.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
   { id: "shelf13", label: "Portrait of Piano", xPercent: 79, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf14", label: "Portrait of Woman", xPercent: 93.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf15", label: "Portrait of Child", xPercent: 9.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf14", label: "Portrait of Lyudmila", xPercent: 93.5, yPercent: 31, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf15", label: "Portrait of Sophelia", xPercent: 9.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf16", label: "Candle", xPercent: 14.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf17", label: "Logs", xPercent: 43.5,  yPercent: 57, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf17", label: "Wood Logs", xPercent: 43.5,  yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf18", label: "Ladder", xPercent: 53, yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf19", label: "Upside Down", xPercent: 67.3, yPercent: 57, widthPercent: 5, heightPercent: 17 },
   { id: "shelf20", label: "Present", xPercent: 72.5, yPercent: 57, widthPercent: 5, heightPercent: 17 },
@@ -25,8 +25,8 @@ export const BOOKSHELVES = [
   { id: "shelf22", label: "Destroyed", xPercent: 3, yPercent: 83, widthPercent: 7, heightPercent: 17 },
   { id: "shelf23", label: "Rack", xPercent: 15.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
   { id: "shelf24", label: "Ribbon", xPercent: 21, yPercent: 83, widthPercent: 6, heightPercent: 17 },
-  { id: "shelf25", label: "Letter", xPercent: 50, yPercent: 83, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf25", label: "Letter and Quill", xPercent: 50, yPercent: 83, widthPercent: 5, heightPercent: 17 },
   { id: "shelf26", label: "Dog Plushie", xPercent: 73.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
-  { id: "shelf27", label: "Tombstone", xPercent: 78.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
+  { id: "shelf27", label: "Tombstones", xPercent: 78.5, yPercent: 83, widthPercent: 5, heightPercent: 17 },
   { id: "shelf28", label: "Mirror", xPercent: 93.5, yPercent: 83, widthPercent: 5, heightPercent: 17 }
 ];
