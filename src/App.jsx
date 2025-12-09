@@ -24,9 +24,15 @@ function getMatchingBookshelves(query) {
     const normText = normalize(r.text);
     const textTokens = normText.split(/\s+/).filter(Boolean);
 
-    // every query token must match the start of at least one word in the riddle
     return queryTokens.every((qToken) =>
-      textTokens.some((tToken) => tToken.startsWith(qToken))
+      textTokens.some((tToken) => {
+        // 1) still support prefix matches (fri -> friend, sleep -> sleeps)
+        if (tToken.startsWith(qToken)) return true;
+
+        // 2) for "meaningful" queries (len >= 4), allow substring matches
+        //    This makes "reflect" match "selfreflection" or "reflection"
+        return qToken.length >= 4 && tToken.includes(qToken);
+      })
     );
   }).map((r) => r.bookshelfId);
 }
