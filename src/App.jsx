@@ -424,20 +424,24 @@ export default function App() {
                       const cardStyles = getOrderCardStyles(order);
 
                       let statusText = "";
+                      let statusEmoji = "";
                       if (!inputValue) {
                         statusText = "No input yet.";
                       } else if (shelfIds.length === 0) {
                         statusText = "No shelves match this text.";
+                        statusEmoji = "❌";
                       } else if (shelfIds.length === 1) {
                         statusText = `Unique shelf: ${
                           primaryShelf?.label || ""
                         }`;
+                        statusEmoji = "✅";
                       } else {
                         statusText = `${
                           shelfIds.length
-                        } possible shelves ⚠️. Showing one example: ${
+                        } possible shelves. Showing one example: ${
                           primaryShelf?.label || ""
                         }`;
+                        statusEmoji = "⚠️";
                       }
 
                       return (
@@ -461,7 +465,10 @@ export default function App() {
                               fontWeight: 500,
                             }}
                           >
-                            #{order}
+                            #{order}{" "}
+                            {statusEmoji && (
+                              <span aria-hidden="true">{statusEmoji}</span>
+                            )}
                           </div>
                           <ShelfPreview shelf={primaryShelf} />
                           <div
@@ -562,11 +569,13 @@ export default function App() {
                 Shelves are dim by default. When a riddle matches, the shelf
                 area highlights and shows that riddle&apos;s number. If multiple
                 shelves share a number, narrow your keywords until only one
-                remains. 
+                remains.
               </p>
-	      <p style={{ margin: 0 }}>
-		Credits to xMiho and GreenCarrot for the tip that bookshelves can be clicked in any order. Credits to PipedPiper and OnlyCats for their suggestions on zoomed-in shelves and layout changes.
-	      </p>
+              <p style={{ margin: 0 }}>
+                Credits to xMiho and GreenCarrot for the tip that bookshelves
+                can be clicked in any order. Credits to PipedPiper and OnlyCats
+                for their suggestions on zoomed-in shelves and layout changes.
+              </p>
             </div>
           </div>
 
