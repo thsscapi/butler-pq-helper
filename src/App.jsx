@@ -197,7 +197,7 @@ export default function App() {
             (MapleLegends). Type fragments of each riddle and see which
             bookshelf they correspond to on the map. Inspired by{" "}
             <a
-              href="https://forum.maplelegends.com/index.php?threads/halloween-2023-butler-pq-guide.51846/"
+              href="https://forum.legends.ml/index.php?threads/halloween-2023-butler-pq-guide.51846/"
               target="_blank"
               rel="noreferrer"
             >
@@ -598,7 +598,7 @@ export default function App() {
           >
             Made with love for{" "}
             <a
-              href="https://maplelegends.com/"
+              href="https://legends.ml/"
               target="_blank"
               rel="noreferrer"
               style={{ color: "#9ad1ff", textDecoration: "underline" }}
@@ -607,7 +607,7 @@ export default function App() {
             </a>
             , but not affiliated. For feedback, please DM thsscapi on{" "}
             <a
-              href="https://forum.maplelegends.com/index.php?conversations/add&to=thsscapi"
+              href="https://forum.legends.ml/index.php?conversations/add&to=thsscapi"
               target="_blank"
               rel="noreferrer"
               style={{ color: "#9ad1ff", textDecoration: "underline" }}
