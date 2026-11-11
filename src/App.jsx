@@ -596,7 +596,7 @@ export default function App() {
               textAlign: "center",
             }}
           >
-            <a href="https://sparrowtools.net/" style={{ display: "inline-block", border: "1px solid #fc8500", borderRadius: 8, padding: "6px 10px", color: "#fc8500", marginBottom: 8 }}>Browse Sparrow Tools</a>
+            <a href="https://sparrowtools.net/" style={{ display: "inline-block", border: "1px solid #fc8500", borderRadius: 8, padding: "6px 10px", color: "#fc8500", marginBottom: 8 }}><img src="https://sparrowtools.net/sparrow.svg" width="20" height="20" alt="" style={{ verticalAlign: "middle", marginRight: 5 }} />Browse Sparrow Tools</a>
             <br />
             Made with love for{" "}
             <a
