@@ -214,7 +214,7 @@ export default function App() {
               textAlign: "center",
             }}
           >
-            Created by: <strong>thsscapi (Sparrow)</strong>
+            Created by: <strong>thsscapi (Sparrow)</strong> · <a href="https://sparrowtools.net/">Browse my other tools</a>
           </p>
 
           {/* ROW 1: instructions full-width */}
@@ -596,6 +596,8 @@ export default function App() {
               textAlign: "center",
             }}
           >
+            <a href="https://sparrowtools.net/" style={{ display: "inline-block", border: "1px solid #fc8500", borderRadius: 8, padding: "6px 10px", color: "#fc8500", marginBottom: 8 }}>Browse Sparrow Tools</a>
+            <br />
             Made with love for{" "}
             <a
               href="https://legends.ml/"
